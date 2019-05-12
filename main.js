@@ -10,8 +10,8 @@ var change = [
     ['dollars-output',  100],
     ['quarters-output',  25],
     ['dimes-output',     10],
-    ['nickels-output',    5]
-//    ['pennies',    1]  
+    ['nickels-output',    5],
+    ['pennies-output',    1],  
 ];
 var  enableLargeBills = false;
 const largeBillThreshold = 100;
@@ -44,15 +44,18 @@ function calculateChange(paid,due) {
     console.log("change_pennies:  " + change_pennies); 
 /*
     var change_left_save = change_left;
-
+*/
     change.some((a) => {
         console.log('=============');
         console.log('loop: a[ name:' + name + ']=' + a[name]);
         console.log('loop: a[value:' + value + ']=' + a[value]);
         console.log('loop: change_left = ' + change_left);
         console.log('loop: Math.floor(change_left / a[value]) = ' + Math.floor(change_left / a[value]));
-
-        if( !(enableLargeBills && (a[value] > largeBillThreshold )) ) {
+        console.log('--------------');
+        console.log('enableLargeBills: ' + enableLargeBills);
+        console.log(`a[value:<${value}>]:<${a[value]}>  > largeBillThreshold:${largeBillThreshold}`);
+        console.log(`a[value:<${value}>]:<${a[value]}>  > largeBillThreshold:${largeBillThreshold}`);
+        if( (!enableLargeBills && (a[value] > largeBillThreshold )) ) {
             console.log('loop: skipping  ' + a[name] );
             document.getElementById(a[name]).innerText = 0;
         } else {
@@ -60,14 +63,15 @@ function calculateChange(paid,due) {
             document.getElementById(a[name]).innerText = Math.floor(change_left / a[value]);
             console.log('loop: new value = ' + document.getElementById(a[name]).innerText );
 
-            change_left %= a[value];
+            //change_left %= a[value];
+            change_left = Math.ceil(change_left % a[value]);
             console.log('loop: change_left %= a[value]; ');
             console.log('loop: change_left = ' + change_left);
         }
     });
-
+/*
     change_left = change_left_save;
-*/    
+    
     //    change_left -= (change_fitties = Math.floor(change_left / 5000))*5000;
     if( !(enableLargeBills) ) {
         console.log('loop: skipping  ' + 'fitties' );
@@ -163,7 +167,7 @@ function calculateChange(paid,due) {
     document.getElementById('dimes-output').innerText = change_dimes;
     document.getElementById('nickels-output').innerText = change_nickels;
     document.getElementById('pennies-output').innerText = change_pennies;
-    /* */
+     */
 }
 
 function handleClickEvent(e) {
@@ -182,7 +186,7 @@ function handleClickEventLargeBillToggle(e){
         enableLargeBills = true;
         document.getElementById('enable-large-bills').innerText = 'Click to disable large bills';
     }
-
+    handleClickEvent(e);
 }
 
 document.getElementById('enable-large-bills').onclick = handleClickEventLargeBillToggle;
