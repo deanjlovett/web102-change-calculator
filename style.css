@@ -1,15 +1,28 @@
 
+.input {
+    width: 100%;
+}
 
-#element_main {font-family:"Arial", Helvetica, sans-serif}
+.myCard {
+    text-align: center;
+    background-color: lightgray;
+    margin-bottom: 10px;
+}
 
+#element_main {
+    font-family:"Arial", Helvetica, sans-serif;
+}
+
+#element_title {
+    text-align: center;
+    background-color: lightgray;
+}
 #element_money_due {display:inline-block; margin-right:10px;} 
 #element_money_paid {display:inline-block;} 
 
-#element_calculate {margin: 25px;}
+#element_buttons {text-align: center; margin-bottom: 25px;}
 
-/*
-#element_bills {text-align: center;}
-*/
+#element_calculate {margin: 25px;}
 
 #element_bills_fifties {display:inline-block; margin-right:10px;} 
 #element_bills_twenties {display:inline-block; margin-right:10px;} 
@@ -17,34 +30,7 @@
 #element_bills_fives {display:inline-block; margin-right:10px;} 
 #element_bills_dollars {display:inline-block; margin-right:10px;} 
 
-/*
-#element_coins {text-align: center;}
-*/
 #element_coins_quarters {display:inline-block; margin-right:10px;} 
 #element_coins_dimes {display:inline-block; margin-right:10px;} 
 #element_coins_nickels {display:inline-block; margin-right:10px;} 
 #element_coins_pennies {display:inline-block; margin-right:10px;} 
-
-/* examples */
-/* Applies to the entire body of the HTML document (except where overridden by more specific
-selectors). */
-/*
-body {
-    margin: 25px;
-    background-color: rgb(240,240,240);
-    font-family: arial, sans-serif;
-    font-size: 14px;
-}
-*/  
-/* Applies to all <h1>...</h1> elements. */
-/*
-h1 {
-    font-size: 35px;
-    font-weight: normal;
-    margin-top: 5px;
-}
-*/
-/* Applies to all elements with <... class="someclass"> specified. */
-.someclass { color: red; }
-/* Applies to the element with <... id="someid"> specified. */
-#someid { color: green; }
