@@ -1,0 +1,154 @@
+// Write your JavaScript here
+
+const name = 0;
+const value = 1;
+var change = [
+    ['fifties_count', 5000],
+    ['twenties_count',2000],
+    ['tens_count',    1000],
+    ['fives_count',    500],
+    ['dollars_count',  100],
+    ['quarters_count',  25],
+    ['dimes_count',     10],
+    ['nickels_count',    5]
+//    ['pennies',    1]  
+];
+
+function calculateChange(paid,due) {
+    console.log("calculateChange( paid: <" + paid + ">, due: <" + due + "> )");
+    console.log("==============");   
+    var change_left = paid*100 - due*100;
+    console.log("change_left:  " + change_left);
+    var change_fifties = 0;
+    var change_twenties = 0;
+    var change_tens = 0;
+    var change_fives = 0;
+    var change_dollars = 0;
+    var change_quarters = 0;
+    var change_dimes = 0;
+    var change_nickels = 0;
+    var change_pennies = 0;
+
+    console.log("==============");
+    console.log("change_fiftie:  " + change_fifties);
+    console.log("change_twenties:  " + change_twenties);
+    console.log("change_tens:  " + change_tens);
+    console.log("change_fives:  " + change_fives);
+    console.log("change_dollars:  " + change_dollars);
+
+    console.log("change_quarters: " + change_quarters);
+    console.log("change_dimes:    " + change_dimes);
+    console.log("change_nickels:  " + change_nickels);
+    console.log("change_pennies:  " + change_pennies); 
+
+    /*
+    var change_left_save = change_left;
+
+    change.some((a) => {
+        console.log('=============');
+        console.log('loop: a[ name:' + name + ']=' + a[name]);
+        console.log('loop: a[value:' + value + ']=' + a[value]);
+        console.log('loop: change_left = ' + change_left);
+        console.log('loop: Math.floor(change_left / a[value]) = ' + Math.floor(change_left / a[value]));
+
+        console.log('loop: old value = ' + document.getElementById(a[name]).innerHTML );
+        document.getElementById(a[name]).innerHTML = Math.floor(change_left / a[value]);
+        console.log('loop: new value = ' + document.getElementById(a[name]).innerHTML );
+
+        change_left %= a[value];
+        console.log('loop: change_left %= a[value]; ');
+        console.log('loop: change_left = ' + change_left);
+    });
+
+    change_left = change_left_save;
+    */
+    //    change_left -= (change_fitties = Math.floor(change_left / 5000))*5000;
+    change_fifties = Math.floor(change_left / 5000);
+    change_left %= 5000;
+
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_fifties:  " + change_fifties);
+
+
+    //    change_left -= (change_twenties = Math.floor(change_left / 2000))*2000;
+    change_twenties = Math.floor(change_left / 2000);
+    change_left %= 2000;
+
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_twenties:  " + change_twenties);
+
+    //    change_left -= (change_tens = Math.floor(change_left / 1000))*1000;
+    change_tens = Math.floor(change_left / 1000);
+    change_left %= 1000;
+
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_tens:  " + change_tens);
+
+    //    change_left -= (change_fives = Math.floor(change_left / 500))*500;
+    change_fives = Math.floor(change_left / 500);
+    change_left %= 500;
+
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_fives:  " + change_fives);
+
+    //    change_left -= (change_dollars = Math.floor(change_left / 100))*100;
+    change_dollars = Math.floor(change_left / 100);
+    change_left %= 100;
+
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_dollars:  " + change_dollars);
+   
+//    change_left -= (change_quarters = Math.floor(change_left / 25))*25;
+    change_quarters = Math.floor(change_left / 25);
+    change_left %= 25;
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_quarters: " + change_quarters);
+
+//    change_left -= (change_dimes = Math.floor(change_left / 10))*10;
+    change_dimes = Math.floor(change_left / 10);
+    change_left %= 10;
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_dimes:    " + change_dimes);
+
+//    change_left -= (change_nickels = Math.floor(change_left / 5))*5;
+    change_nickels = Math.floor(change_left / 5);
+    change_left %= 5;
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_nickels:  " + change_nickels);
+
+    change_pennies = change_left;
+    console.log("==============");
+    console.log("change_left:     " + change_left);
+    console.log("change_pennies:  " + change_pennies); 
+
+
+
+    document.getElementById('fifties_count').innerHTML = change_fifties;
+    document.getElementById('twenties_count').innerHTML = change_twenties;
+    document.getElementById('tens_count').innerHTML = change_tens;
+    document.getElementById('fives_count').innerHTML = change_fives;
+
+    document.getElementById('dollars_count').innerHTML = change_dollars;
+
+    document.getElementById('quarters_count').innerHTML = change_quarters;
+    document.getElementById('dimes_count').innerHTML = change_dimes;
+    document.getElementById('nickels_count').innerHTML = change_nickels;
+    document.getElementById('pennies_count').innerHTML = change_pennies;
+    /* */
+}
+
+function handleClickEvent(e) {
+    let due = document.getElementById('money_due').value;
+    let paid = document.getElementById('money_paid').value;
+    calculateChange(paid,due);
+}
+  
+document.getElementById('calculate-button').onclick = handleClickEvent;

@@ -1,0 +1,33 @@
+// Write your JavaScript here
+
+const name = 0;
+const value = 1;
+var change = [
+    ['fifties_count', 5000],
+    ['twenties_count',2000],
+    ['tens_count',    1000],
+    ['fives_count',    500],
+    ['dollars_count',  100],
+    ['quarters_count',  25],
+    ['dimes_count',     10],
+    ['nickels_count',    5],
+    ['pennies_count',    1],  
+];
+
+function calculateAndPostTheChange(paid,due) {
+    var change_left = paid*100 - due*100;
+    // DJL: todo: check for negative numbers.
+    // djl: todo: Somewhere, validate the paid > due _BEFORE_ this is called.
+    change.forEach((a) => {
+        document.getElementById(a[name]).innerHTML = Math.floor(change_left / a[value]);
+        change_left %= a[value];
+    });
+}
+
+function handleClickEvent(e) {
+    let due = document.getElementById('money_due').value;
+    let paid = document.getElementById('money_paid').value;
+    calculateAndPostTheChange(paid,due);
+}
+  
+document.getElementById('calculate-button').onclick = handleClickEvent;

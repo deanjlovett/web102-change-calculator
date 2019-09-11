@@ -1,4 +1,4 @@
-#web102-change-calculator
+# web102-change-calculator
 
 A simple html page to calculate calculate the amount of change due.
 
